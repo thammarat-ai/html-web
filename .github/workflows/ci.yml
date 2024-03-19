@@ -9,6 +9,7 @@ jobs:
     build-job:
         runs-on: ubuntu-latest
         steps:
+            - run: echo ${{vars.COMPANY_NAME}}
             - run: echo "My Host is $MY_HOST"
             - run: echo "Hello ${{github.actor}}!"
 
