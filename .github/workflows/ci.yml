@@ -6,5 +6,18 @@ jobs:
     build-job:
         runs-on: ubuntu-latest
         steps:
-            - run: echo "The job was successfully run."
+            - run: echo "Hello ${{github.actor}}!"
+
+    test-job:
+        runs-on: ubuntu-latest
+        needs: build-job
+        steps:
+            - run: echo "Repo ${{github.repository}} has been built successfully!"
+    
+    deploy-job:
+        runs-on: ubuntu-latest
+        needs: test-job
+        steps:
+            - run: echo "Deploying ${{job.status}} to production environment!"
+    
 
